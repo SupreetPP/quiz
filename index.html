@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="site">
+
+        <div class="quiz-box">
+            <div class="quiz-question">
+                <h1>Question #1</h1>
+            </div>
+            <div class="quiz-answers">
+                <div class="quiz-radio__wrap">
+                    <div class="quiz-radio">
+                        <input type="radio" name="ans" id="radio1">
+                        <label for="radio1">Option 1</label>
+                    </div>
+                    <div class="quiz-radio">
+                        <input type="radio" name="ans" id="radio2">
+                        <label for="radio2">Option 2</label>
+                    </div>
+                    <div class="quiz-radio">
+                        <input type="radio" name="ans" id="radio3">
+                        <label for="radio3">Option 3</label>
+                    </div>
+                    <div class="quiz-radio">
+                        <input type="radio" name="ans" id="radio4">
+                        <label for="radio4">Option 4</label>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-controls">
+                <button id="questionPrev">Prev Question</button>
+                <button id="questionNext">Next Question</button>
+            </div>
+        </div>
+
+        <div class="quiz-popup">
+            <div class="quiz-popup-exit"></div>
+            <div class="quiz-popup-text">
+                <h1>Congratulations!!!</h1>
+                <p>You Passed The Quiz</p>
+                <p>With 2/3 points</p>
+            </div>
+        </div>
+
+    </div>
+    <!-- <script>
+        document.body.addEventListener('mouseover', (e) => {
+            console.log(e)
+        })
+    </script> -->
+    <script src="./script.js"></script>
+</body>
+
+</html>

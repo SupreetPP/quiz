@@ -1,0 +1,272 @@
+$color-blue: #014AD3;
+$color-red: #ff6868;
+$color-yellow:#ffd55c;
+$color-green: #4edc9f;
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+body {
+    font-family: Lato;
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+.site {
+    position: relative;
+    width: 100%;
+    padding: 9rem 0;
+    min-height: 100vh;
+    background-image: linear-gradient(150deg, $color-blue 50%, #fff 50%);
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   bottom: 0;
+    //   left: 0;
+    //   right: 0;
+    //   width: 100%;
+    //   height: 60%;
+    //   background-color: $color-blue;
+    //   border-radius: 25px 25px 0 0;
+    // }
+
+    >* {
+        z-index: 1;
+        position: relative;
+    }
+}
+
+.quiz {
+    &-box {
+        position: relative;
+        background-color: #fff;
+        box-shadow: 0 0 12px 0 rgba(#000, 0.4);
+        border-radius: 4px;
+        max-width: 80rem;
+        padding: 6rem;
+        margin: 10rem auto;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4rem;
+            height: 100%;
+            background-image: url('./springs.png');
+            background-position: 100% 0;
+            background-size: 4rem auto;
+            background-repeat: repeat-y;
+        }
+    }
+
+    &-question {
+        h1 {
+            font-family: Raleway;
+            font-size: 3rem;
+            font-weight: 400;
+            text-align: center;
+            margin: 1rem 0 3rem;
+
+            &::after {
+                content: "";
+                display: block;
+                width: 8rem;
+                height: .4rem;
+                background-color: $color-blue;
+                margin-top: 1rem;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 25px;
+            }
+        }
+    }
+
+
+    &-answers {}
+
+    &-radio {
+        width: 50%;
+        padding: 1rem;
+
+        &__wrap {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        input {
+            display: none;
+        }
+
+        label {
+            font-family: Montserrat;
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: block;
+            position: relative;
+            padding: 1rem;
+            background-color: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px 0px rgba(#000, 0.2);
+
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                margin-right: 1rem;
+                vertical-align: middle;
+                background-color: $color-blue;
+                border: 3px solid $color-blue;
+                transition: all .5s ease;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%) scale(0.5);
+                left: 1.65rem;
+                width: 1.75rem;
+                height: 1.75rem;
+                border-radius: 50%;
+                background-color: $color-blue;
+                transition: all .5s ease;
+            }
+        }
+
+        input:checked+label {
+            &::before {
+                background-color: #fff;
+            }
+
+            &::after {
+                transform: translateY(-50%) scale(1);
+            }
+        }
+
+    }
+
+    &-controls {
+        position: relative;
+        width: 100%;
+        height: 6rem;
+        margin-top: 2rem;
+
+        button {
+            font-family: Poppins;
+            font-size: 1.7rem;
+            font-weight: 700;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 8px;
+            border: 0;
+            padding: 1.5rem;
+            color: #fff;
+        }
+
+        #questionPrev {
+            left: 0;
+            color: #222;
+            background-color: $color-yellow;
+        }
+
+        #questionNext {
+            right: 0;
+            background-color: $color-blue;
+        }
+    }
+
+    &-popup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: -100%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background-color: #fff;
+        min-width: 50rem;
+        min-height: 30rem;
+        box-shadow: 0 0 9px 1px rgba(#000, 0.2);
+        transition: all .7s ease;
+        background-image: linear-gradient(180deg, $color-yellow 15%, transparent 15%, transparent 85%, $color-blue 85%);
+        // background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAATklEQVQoU2NkYGAwZmBgOMuAACA+CKCIMSIpADGRNaEYgKwQ3WQUjTCF6CYhWw2WAynEpgjmIpg7jUlSiM0TWK2GWUOUZ7ApxggeogIcABHJFtftKVfJAAAAAElFTkSuQmCC');
+        // background-position: center;
+        // background-size: 50% auto;
+
+        &.open {
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        &-exit {
+            position: absolute;
+            top: -1.5rem;
+            right: -1.5rem;
+            display: block;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            background-color: $color-red;
+            cursor: pointer;
+            transition: all .5s ease;
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+                width: 10%;
+                height: 60%;
+            }
+
+            &::before {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+
+            &::after {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        &-text {
+            text-align: center;
+            padding: 4rem 8rem;
+            background-image: linear-gradient(90deg, $color-yellow 15%, transparent 15%, transparent 85%, $color-blue 85%);
+            transition: all .4s ease;
+
+            h1 {
+                font-size: 3rem;
+                font-weight: 900;
+            }
+
+            p {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
